@@ -1,4 +1,4 @@
-# 2-2 split / join 字串分割與合併
+# 3-2 split / join 字串分割與合併
 
 ## split()：將字串切割為清單
 

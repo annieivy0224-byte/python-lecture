@@ -1,65 +1,65 @@
-# 3-4 解答與說明
+# 解答與說明
 
 ::: warning 使用建議
-請先嘗試自行完成 [3-1 字串基礎練習題](./01-string-basics)、[3-2 清單基礎練習題](./02-list-basics)、[3-3 字串與清單綜合練習題](./03-mixed) 後，再對照以下解答。每題解答僅為其中一種寫法，歡迎嘗試其他作法。
+請先嘗試自行完成 [5-1 字串基礎練習題](./01-string-basics)、[5-2 清單基礎練習題](./02-list-basics)、[5-3 字串與清單綜合練習題](./03-mixed) 後，再對照以下解答。每題解答僅為其中一種寫法，歡迎嘗試其他作法。
 :::
 
-## 3-1 字串基礎練習題 解答
+## 5-1 字串基礎練習題 解答
 
 ### 第 1 題：反轉字串
 
 ```python
-s = input('請輸入字串：')
+s = input()
 print(s[::-1])
 ```
 
 ### 第 2 題：判斷回文
 
 ```python
-s = input('請輸入字串：')
+s = input()
 
 if s == s[::-1]:
-    print(f'{s} 是回文')
+    print('Yes')
 else:
-    print(f'{s} 不是回文')
+    print('No')
 ```
 
 ### 第 3 題：計算字串中母音的數量
 
 ```python
-s = input('請輸入字串：')
-vowels = 'aeiouAEIOU'
+s = input()
+v = 'aeiouAEIOU'
 
 count = 0
 for ch in s:
-    if ch in vowels:
+    if ch in v:
         count += 1
 
-print(f'母音數量：{count}')
+print(count)
 ```
 
 ### 第 4 題：將姓名格式化
 
 ```python
-full_name = input('請輸入英文全名：')
-first, last = full_name.split()
+name = input()
+first, last = name.split()
 
-print(f'{last.capitalize()}, {first.capitalize()}')
+print(last.capitalize(), first.capitalize())
 ```
 
 ### 第 5 題：統計單字數量
 
 ```python
-sentence = input('請輸入一句英文句子：')
-words = sentence.split()
+s = input()
+words = s.split()
 
-print(f'單字數量：{len(words)}')
+print(len(words))
 ```
 
 ### 第 6 題：移除字串中的數字
 
 ```python
-s = input('請輸入字串：')
+s = input()
 
 result = ''
 for ch in s:
@@ -72,26 +72,26 @@ print(result)
 ### 第 7 題：將字串中的空白替換為下底線
 
 ```python
-s = input('請輸入一句英文句子：')
+s = input()
 print(s.replace(' ', '_'))
 ```
 
 ### 第 8 題：身分證字號開頭字母判斷（簡化版）
 
 ```python
-id_number = input('請輸入字串：')
+n = input()
 
-if len(id_number) == 10 and id_number[0].isalpha():
-    print('格式正確')
+if len(n) == 10 and n[0].isalpha():
+    print('Y')
 else:
-    print('格式錯誤')
+    print('N')
 ```
 
 ### 第 9 題：將日期字串轉換格式
 
 ```python
-date_str = input('請輸入日期(YYYY-MM-DD)：')
-year, month, day = date_str.split('-')
+s = input()
+year, month, day = s.split('-')
 
 print(f'{year}年{month}月{day}日')
 ```
@@ -99,34 +99,28 @@ print(f'{year}年{month}月{day}日')
 ### 第 10 題：找出字串中最長的單字
 
 ```python
-sentence = input('請輸入一句英文句子：')
-words = sentence.split()
+s = input()
+words = s.split()
 
 longest = words[0]
 for w in words:
     if len(w) > len(longest):
         longest = w
 
-print(f'最長的單字是：{longest}')
+print(longest)
 ```
 
 ---
 
-## 3-2 清單基礎練習題 解答
+## 5-2 清單基礎練習題 解答
 
 ### 第 1 題：找出最大值與最小值
 
 ```python
-nums = [12, 45, 7, 89, 23, 56]
+nums = list(map(int,input().split(',')))
 
-max_val = nums[0]
-min_val = nums[0]
-
-for n in nums:
-    if n > max_val:
-        max_val = n
-    if n < min_val:
-        min_val = n
+max_val = max(nums)
+min_val = min(nums)
 
 print(f'最大值：{max_val}，最小值：{min_val}')
 ```
@@ -134,7 +128,7 @@ print(f'最大值：{max_val}，最小值：{min_val}')
 ### 第 2 題：計算清單總和與平均
 
 ```python
-scores = [80, 92, 75, 88, 60]
+scores = list(map(int,input().split(',')))
 
 total = sum(scores)
 average = total / len(scores)
@@ -145,7 +139,7 @@ print(f'總和：{total}，平均：{average:.2f}')
 ### 第 3 題：移除清單中的重複元素
 
 ```python
-nums = [1, 3, 2, 3, 1, 4, 2, 5]
+nums = list(map(int,input().split(',')))
 
 result = []
 for n in nums:
@@ -158,29 +152,25 @@ print(result)
 ### 第 4 題：篩選及格名單
 
 ```python
-scores = [55, 78, 60, 45, 90, 59, 100]
+scores = list(map(int,input().split(',')))
 
 passed = [s for s in scores if s >= 60]
-print(f'及格名單：{passed}')
+print(''.join(map(str,passed)))
 ```
 
-### 第 5 題：清單反轉（不使用 reverse() 或切片）
+### 第 5 題：清單反轉
 
 ```python
-nums = [1, 2, 3, 4, 5]
+nums = list(map(int,input().split(',')))
 
-result = []
-for n in nums:
-    result.insert(0, n)
-
-print(result)
+print(result[::-1])
 ```
 
 ### 第 6 題：兩個清單合併並排序
 
 ```python
-list1 = [3, 1, 4]
-list2 = [2, 6, 5]
+list1 = list(map(int,input().split(',')))
+list2 = list(map(int,input().split(',')))
 
 merged = list1 + list2
 merged.sort()
@@ -191,12 +181,19 @@ print(merged)
 ### 第 7 題：計算每個數字出現的次數
 
 ```python
-nums = [1, 2, 2, 3, 1, 2, 4]
+# 方法 1
+from collections import Counter
 
-unique_nums = sorted(set(nums))
+nums = list(map(int,input().split(',')))  
+c = Counter(nums)
+for i in c:
+    print(f'{i}: {c[i]} 次')
 
-for n in unique_nums:
-    print(f'{n}: {nums.count(n)} 次')
+# 方法 2
+nums = list(map(int,input().split(',')))
+n = sorted(set(nums))
+for i in n:
+    print(f'{i}: {nums.count(i)} 次')
 ```
 
 ### 第 8 題：將清單中所有數字加總並判斷奇偶
@@ -241,7 +238,7 @@ for s in students:
 
 ---
 
-## 3-3 字串與清單綜合練習題 解答
+## 5-3 字串與清單綜合練習題 解答
 
 ### 第 1 題：將句子拆解成單字清單並排序
 

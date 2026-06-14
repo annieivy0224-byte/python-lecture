@@ -1,4 +1,4 @@
-# 2-4 find、count 與 in 判斷
+# 3-4 find、count 與 in 判斷
 
 ## in / not in：判斷子字串是否存在
 
@@ -45,6 +45,7 @@ print(second)   # 15
 ```
 
 ::: tip find() vs index()
+
 - `str.find(sub)`：找不到回傳 `-1`。
 - `str.index(sub)`：找不到會產生 `ValueError`（與清單的 `index()` 相同）。
 
@@ -92,6 +93,7 @@ else:
 ```
 
 說明：
+
 - `isalpha()`：判斷字元是否為英文字母
 - `isdigit()`：判斷字串是否全為數字
 

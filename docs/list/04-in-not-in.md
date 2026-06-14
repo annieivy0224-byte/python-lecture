@@ -1,4 +1,4 @@
-# 1-4 in / not in 與 index、count
+# 2-4 in / not in 與 index、count
 
 ## in 與 not in：判斷元素是否存在
 
@@ -43,6 +43,7 @@ if target in fruits:
 else:
     print(f'{target} 不存在於清單中')
 ```
+
 :::
 
 ## count()：計算元素出現的次數

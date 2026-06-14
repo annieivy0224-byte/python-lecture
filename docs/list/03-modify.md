@@ -1,4 +1,4 @@
-# 1-3 新增、刪除與插入
+# 2-3 新增、刪除與插入
 
 ## append()：在清單尾端新增元素
 
@@ -17,6 +17,7 @@ fruits = ['apple', 'banana']
 fruits.append(['cherry', 'durian'])
 print(fruits)   # ['apple', 'banana', ['cherry', 'durian']]
 ```
+
 :::
 
 ## extend()：合併另一個清單的所有元素
@@ -70,9 +71,10 @@ print(fruits)   # ['apple', 'cherry', 'banana']
 ```
 
 ::: tip del vs remove
+
 - `del list[index]`：依**索引位置**刪除。
 - `list.remove(value)`：依**內容值**刪除（找到第一個符合的）。
-:::
+  :::
 
 ## pop()：取出並刪除指定位置的元素
 
