@@ -1,7 +1,7 @@
 # 解答與說明
 
 ::: warning 使用建議
-請先嘗試自行完成 [5-1 字串基礎練習題](./01-string-basics)、[5-2 清單基礎練習題](./02-list-basics)、[5-3 字串與清單綜合練習題](./03-mixed) 後，再對照以下解答。每題解答僅為其中一種寫法，歡迎嘗試其他作法。
+請先嘗試自行完成 [5-1 字串基礎練習題](./01-string-basics)、[5-2 清單基礎練習題](./02-list-basics)、[5-3 字串與清單綜合練習題](./03-mixed) 後，再參考以下解答。每題解答僅為"其中"一種寫法，並非唯一解，歡迎嘗試其他作法。
 :::
 
 ## 5-1 字串基礎練習題 解答
@@ -188,7 +188,9 @@ nums = list(map(int,input().split(',')))
 c = Counter(nums)
 for i in c:
     print(f'{i}: {c[i]} 次')
+```
 
+```python
 # 方法 2
 nums = list(map(int,input().split(',')))
 n = sorted(set(nums))
@@ -199,7 +201,7 @@ for i in n:
 ### 第 8 題：將清單中所有數字加總並判斷奇偶
 
 ```python
-nums = [1, 2, 3, 4, 5]
+nums = list(map(int,input().split(',')))
 
 total = sum(nums)
 
@@ -212,7 +214,7 @@ else:
 ### 第 9 題：清單中的偶數與奇數分類
 
 ```python
-nums = [1, 2, 3, 4, 5, 6, 7, 8]
+nums = list(map(int,input().split(',')))
 
 evens = [n for n in nums if n % 2 == 0]
 odds = [n for n in nums if n % 2 != 0]
@@ -224,16 +226,10 @@ print(f'奇數：{odds}')
 ### 第 10 題：二維成績表計算每列總分
 
 ```python
-students = [
-    ['Amy', 80, 90, 85],
-    ['Bob', 70, 65, 88],
-    ['Cathy', 95, 92, 99]
-]
+students = eval(input())
 
-for s in students:
-    name = s[0]
-    total = sum(s[1:])
-    print(f'{name} 的總分：{total}')
+for name, *scores in students:
+    print(f"{name} 的總分：{sum(scores)}")
 ```
 
 ---
@@ -243,42 +239,49 @@ for s in students:
 ### 第 1 題：將句子拆解成單字清單並排序
 
 ```python
-sentence = 'the Quick brown Fox jumps'
-
-words = sentence.split()
-words.sort(key=str.lower)
-
-print(words)
+s = input().split()
+print(sorted(s, key=str.lower))
 ```
 
 ### 第 2 題：統計字元出現頻率
 
 ```python
-s = 'hello world'
+from collections import Counter
 
-s = s.replace(' ', '').lower()
-chars = list(s)
-
-unique_chars = list(set(chars))
+s = Counter(input().replace(' ',''))
 
 # 依出現次數由高到低排序
-unique_chars.sort(key=lambda c: chars.count(c), reverse=True)
+s = sorted(s.items(), key=lambda x: x[1], reverse=True)
 
-for c in unique_chars[:3]:
-    print(f'{c}: {chars.count(c)} 次')
+for i,cnt in s[:3]:
+    print(f'{i}: {cnt} 次')
 ```
 
 ::: tip 說明
-`sort(key=...)` 的 `key` 參數可以指定一個函式，用來決定排序的依據。這裡使用 `lambda` 匿名函式 `lambda c: chars.count(c)`，表示依照每個字元在 `chars` 中出現的次數來排序。
+`sorted(s.items(), key=lambda x: x[1], reverse=True)` 
+
+`s.items()` => [(**'l'**, **3**), (**'h'**, **1**), (**'o'**, **2**), ...]
+
+`key` 參數可以指定一個函式，用來決定排序的依據。這裡使用  `lambda x: x[1]`，表示依照每個字元在 `s` 中出現的次數來排序。
+
+`reverse` 預設 `False` (升序 低到高)，`True` (降序 高到低)
+:::
+
+::: warning 進階 (二次排序)
+
+如果次數一樣，再按字母排序：
+
+`sorted(s.items(), key=lambda x: (-x[1], x[0]))`
+
 :::
 
 ### 第 3 題：將清單資料轉換為一行字串並輸出
 
 ```python
-data = [['Amy', 90], ['Bob', 85], ['Cathy', 95]]
+data = eval(input())
 
 items = [f'{name}:{score}' for name, score in data]
-result = ','.join(items)
+result = ', '.join(items)
 
 print(result)
 ```
@@ -286,21 +289,32 @@ print(result)
 ### 第 4 題：解析 CSV 格式字串並計算平均
 
 ```python
-line = '王小明,85,90,78,92'
+name, *n = input().split(',')
 
-parts = line.split(',')
-name = parts[0]
-scores = [int(x) for x in parts[1:]]
-
-average = sum(scores) / len(scores)
+average = sum(map(int,n)) / len(n)
 print(f'{name} 的平均成績為 {average:.2f}')
 ```
 
 ### 第 5 題：找出句子中出現次數最多的單字
 
 ```python
-sentence = 'the cat sat on the mat the cat ran'
-words = sentence.split()
+# 方法 1
+from collections import Counter
+
+s = input().split()
+cnt = Counter(s)
+
+max_count = max(cnt.values())
+
+for w in s:   # 用原順序掃
+    if cnt[w] == max_count: # 印出第一個符合的
+        print(f'出現次數最多的單字是 {w}，出現了 {max_count} 次')
+        break
+```
+
+```python
+# 方法 2
+words = input().split()
 
 max_word = words[0]
 max_count = 0
@@ -317,53 +331,60 @@ print(f'出現次數最多的單字是 "{max_word}"，出現了 {max_count} 次'
 ### 第 6 題：將多行資料轉換為巢狀清單並篩選
 
 ```python
-lines = [
-    '王小明,85,90,78',
-    '李小華,60,55,70',
-    '陳小美,92,88,95'
-]
+s = eval(input())
 
-result = []
-for line in lines:
-    parts = line.split(',')
-    name = parts[0]
-    scores = [int(x) for x in parts[1:]]
-    result.append([name, scores])
+li = []
+for i in s:
+    name, *n = i.split(',')
+    n = list(map(int,n))
+    li.append([name, n])
 
-qualified = []
-for name, scores in result:
+ans = []
+for name, scores in li:
     avg = sum(scores) / len(scores)
     if avg >= 80:
-        qualified.append(name)
+        ans.append(name)
 
-print(f'平均達80分的學生：{qualified}')
+print(f'平均達80分的學生：{", ".join(ans)}')
 ```
 
 ### 第 7 題：身分證字號簡易檢查
 
 ```python
-s = input('請輸入字串：')
+s = input()
 
-is_valid = (
+check = (
     len(s) == 10 and
     s[0].isalpha() and
+    (s[1]=='1' or s[1]=='2') and
     s[1:].isdigit()
 )
 
-if is_valid:
-    print('格式正確')
-else:
-    print('格式錯誤')
+print('YES' if check else 'NO')
 ```
 
 ### 第 8 題：將數字清單轉換為逗號分隔字串並反轉
 
-```python
-nums = [1, 2, 3, 4, 5]
 
-s = ','.join(str(n) for n in nums)
+```python
+ = eval(input())
+s = ','.join(str(i) for i in n)
+
 print(f'原字串：{s}')
 print(f'反轉後：{s[::-1]}')
+
 ```
 
 說明：`s[::-1]` 是針對**整個字串**進行反轉，因此 `'1,2,3,4,5'` 反轉後變成 `'5,4,3,2,1'`（剛好每個數字仍是單字元，所以結果看起來像是把數字順序反轉；若數字超過一位數，結果會不同，可自行測試 `[10, 20, 30]` 觀察差異）。
+
+```python
+# 將數字清單反轉
+n = eval(input())
+
+s = ",".join(map(str, n))
+rev = ",".join(map(str, n[::-1]))
+
+print(f"原字串：{s}")
+print(f"反轉後：{rev}")
+
+```
