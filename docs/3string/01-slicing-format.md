@@ -7,7 +7,7 @@
 ```python
 s = 'Python'
 
-print(s[0])    # P# 3-1 字串切片與格式化輸出
+print(s[0])    # P
 ```
 
 字串（str）本質上也是一序列字元的集合，因此**第 2 章學過的索引與切片技巧，同樣可以套用在字串上**。
@@ -57,6 +57,10 @@ print(s[:5])     # Hello
 print(s[7:])     # Python!
 print(s[::-1])   # !nohtyP ,olleH，反轉字串
 ```
+
+## List vs String 動態比較
+⬇️ 可以點擊玩玩看
+<IndexDemo /> 
 
 ## 格式化輸出：f-string
 

@@ -21,45 +21,6 @@ print(fruits)   # ['apple', 'banana', ['cherry', 'durian']]
 若想把另一個清單的元素逐一加入，請改用 `extend()`。
 :::
 
-## extend()：合併另一個清單的所有元素
-
-```python
-fruits = ['apple', 'banana']
-more_fruits = ['cherry', 'durian']
-
-fruits.extend(more_fruits)
-print(fruits)   # ['apple', 'banana', 'cherry', 'durian']
-```
-
-## insert()：在指定位置插入元素
-
-```python
-fruits = ['apple', 'banana', 'cherry']
-
-fruits.insert(1, 'orange')
-print(fruits)   # ['apple', 'orange', 'banana', 'cherry']
-```
-
-`insert(index, value)` 會把 `value` 插入到 `index` 的位置，原本該位置及之後的元素依序往後移。
-
-## del：刪除指定位置的元素
-
-```python
-fruits = ['apple', 'banana', 'cherry']
-
-del fruits[1]
-print(fruits)   # ['apple', 'cherry']
-```
-
-`del` 也可以搭配切片刪除多個元素：
-
-```python
-nums = [1, 2, 3, 4, 5]
-
-del nums[1:3]   # 刪除索引 1、2（不含索引 3）
-print(nums)     # [1, 4, 5]
-```
-
 ## remove()：依「值」刪除元素
 
 `remove()` 會刪除清單中**第一個**符合指定值的元素。
@@ -142,12 +103,12 @@ print(fruits)   # []
 | 方法 | 說明 | 會回傳值？ |
 |------|------|-----------|
 | `append(x)` | 在尾端新增一個元素 | 無 |
-| `extend(lst)` | 將另一個清單的所有元素加入尾端 | 無 |
-| `insert(i, x)` | 在索引 i 位置插入元素 x | 無 |
-| `del list[i]` | 刪除索引 i 的元素 | 無 |
 | `remove(x)` | 刪除第一個值為 x 的元素 | 無 |
 | `pop(i)` | 刪除並回傳索引 i 的元素（預設最後一個） | ✅ 是 |
 | `clear()` | 清空清單 | 無 |
+| `extend(lst)` | 將另一個清單的所有元素加入尾端 | 無 |
+| `insert(i, x)` | 在索引 i 位置插入元素 x | 無 |
+| `del list[i]` | 刪除索引 i 的元素 | 無 |
 
 ### 自主練習
 
