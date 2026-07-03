@@ -31,8 +31,15 @@ pos = fruits.index('banana')
 print(pos)   # 1，回傳第一次出現的索引
 ```
 
-::: warning 注意
-如果元素不存在於清單中，`index()` 會產生 `ValueError`。使用前建議先用 `in` 判斷是否存在：
+::: warning 常見錯誤：元素不存在時會發生錯誤
+如果元素不存在於清單中，`index()` 會產生 `ValueError`，程式會直接中斷：
+
+```python
+fruits = ['apple', 'banana', 'cherry']
+print(fruits.index('mango'))   # ValueError: 'mango' is not in list
+```
+
+使用前請先用 `in` 確認元素存在：
 
 ```python
 fruits = ['apple', 'banana', 'cherry']
@@ -43,7 +50,6 @@ if target in fruits:
 else:
     print(f'{target} 不存在於清單中')
 ```
-
 :::
 
 ## count()：計算元素出現的次數
@@ -52,7 +58,7 @@ else:
 nums = [1, 2, 2, 3, 2, 4, 5, 2]
 
 print(nums.count(2))   # 4
-print(nums.count(9))   # 0，不存在則回傳 0
+print(nums.count(9))   # 0，不存在則回傳 0（不會發生錯誤）
 ```
 
 ## 綜合範例：統計與查找
@@ -82,6 +88,14 @@ print(f'第一個 90 分出現在索引 {pos}')
 90 分出現了 3 次
 第一個 90 分出現在索引 1
 ```
+
+## 本節方法一覽
+
+| 方法 | 說明 | 找不到時 |
+|------|------|---------|
+| `x in list` | 判斷 x 是否存在，回傳 True/False | 回傳 False（不報錯） |
+| `list.index(x)` | 回傳 x 第一次出現的索引 | ❌ 產生 ValueError |
+| `list.count(x)` | 回傳 x 出現的次數 | 回傳 0（不報錯） |
 
 ### 自主練習
 

@@ -27,8 +27,16 @@ parts = s.split(',')
 print(parts)   # ['apple', 'banana', '', 'cherry']
 ```
 
-::: warning 注意
-使用指定分隔字元時，連續的分隔字元會產生空字串 `''`；但**不指定**分隔字元（依空白切割）時，連續空白會自動被忽略。
+::: warning 連續分隔字元的差異
+使用**指定分隔字元**時，連續的分隔字元會產生空字串 `''`；
+但**不指定**分隔字元（依空白切割）時，連續空白會自動被忽略。
+
+```python
+s = 'a  b  c'          # 兩個空格
+
+print(s.split())       # ['a', 'b', 'c']，連續空白忽略
+print(s.split(' '))    # ['a', '', 'b', '', 'c']，連續空格產生空字串
+```
 :::
 
 ## split() 處理 CSV 格式資料
@@ -48,7 +56,17 @@ print(name, scores)  # 王小明 [85, 90, 78]
 
 ## join()：將清單合併為字串
 
-`join()` 是 `split()` 的相反操作，將清單中的所有元素以指定的字元連接成一個字串。**注意 `join()` 是字串的方法，清單中的元素必須都是字串**。
+`join()` 是 `split()` 的相反操作，將清單中的所有元素以指定的字元連接成一個字串。
+
+::: warning join() 的語法特別注意
+`join()` 是**字串**的方法，不是清單的方法。語法是：
+
+```python
+'分隔字元'.join(清單)
+```
+
+清單中的元素必須**全部都是字串**，數字需先轉型（見下方說明）。
+:::
 
 ```python
 words = ['apple', 'banana', 'cherry']
@@ -71,6 +89,10 @@ print(date_str)   # 2024-06-13
 ```python
 nums = [1, 2, 3, 4, 5]
 
+# ❌ 錯誤寫法
+# s = ','.join(nums)   # TypeError: sequence item 0: expected str instance, int found
+
+# ✅ 正確寫法：先用 list comprehension 轉型
 s = ','.join([str(n) for n in nums])
 print(s)   # 1,2,3,4,5
 ```
@@ -89,6 +111,14 @@ reversed_words = [w[::-1] for w in words]
 result = ' '.join(reversed_words)
 print(result)   # I evol nohtyP gimmargorp
 ```
+
+## 本節方法一覽
+
+| 方法 | 說明 | 回傳型別 |
+|------|------|---------|
+| `str.split()` | 依空白切割字串 | 清單（list） |
+| `str.split(sep)` | 依指定字元切割 | 清單（list） |
+| `'sep'.join(lst)` | 將清單合併為字串 | 字串（str） |
 
 ### 自主練習
 

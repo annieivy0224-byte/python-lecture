@@ -44,12 +44,15 @@ print(first)    # 7
 print(second)   # 15
 ```
 
-::: tip find() vs index()
+::: tip find() vs index()（字串版）
+字串也有 `index()` 方法，行為幾乎相同，但找不到時的處理不同：
 
-- `str.find(sub)`：找不到回傳 `-1`。
-- `str.index(sub)`：找不到會產生 `ValueError`（與清單的 `index()` 相同）。
+| 方法 | 找不到時 |
+|------|---------|
+| `str.find(sub)` | 回傳 `-1`（安全） |
+| `str.index(sub)` | 產生 `ValueError`（需搭配 try/except） |
 
-通常 `find()` 較常用於「先判斷是否存在」的情境。
+通常 `find()` 更常用，因為可以直接用 `if pos != -1` 判斷是否找到。
 :::
 
 ## count()：計算子字串出現的次數
@@ -77,8 +80,16 @@ print(f'"the" 出現了 {count_the} 次')
 "the" 出現了 3 次
 ```
 
-::: warning split() + count() vs str.count()
-`sentence.count('the')` 會把 `'the'` 當作**子字串**搜尋，因此 `'they'` 中的 `'the'` 也會被算進去。若要統計**完整單字**的次數，應先用 `split()` 切成單字清單，再用清單的 `count()`。
+::: warning str.count() vs split().count() 的差異
+`sentence.count('the')` 會把 `'the'` 當作**子字串**搜尋，`'they'`、`'other'` 中的 `'the'` 也會被算進去。
+
+```python
+s = 'the other theme'
+print(s.count('the'))          # 3（子字串，包含 other、theme 內的 the）
+print(s.split().count('the'))  # 1（完整單字，只算獨立的 the）
+```
+
+統計**完整單字**，請先用 `split()` 切成單字清單，再用清單的 `count()`。
 :::
 
 ## 範例：檢查身分證字號格式（簡化版）
@@ -117,6 +128,15 @@ while True:
 
 print(positions)   # [0, 2, 5, 8]
 ```
+
+## 本節方法一覽
+
+| 方法 | 找不到時 | 說明 |
+|------|---------|------|
+| `sub in str` | 回傳 `False` | 判斷子字串是否存在 |
+| `str.find(sub)` | 回傳 `-1` | 找第一次出現的索引 |
+| `str.find(sub, start)` | 回傳 `-1` | 從 start 開始找 |
+| `str.count(sub)` | 回傳 `0` | 計算出現次數 |
 
 ### 自主練習
 

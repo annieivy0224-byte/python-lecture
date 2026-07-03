@@ -7,9 +7,9 @@
 ```python
 s = '   Hello, Python!   '
 
-print(s.strip())   # 'Hello, Python!'
-print(len(s))          # 21
-print(len(s.strip()))  # 15
+print(s.strip())           # 'Hello, Python!'
+print(len(s))              # 21
+print(len(s.strip()))      # 15
 ```
 
 也可以用 `lstrip()`、`rstrip()` 分別去除左側或右側的空白：
@@ -31,6 +31,16 @@ s = '###Python###'
 print(s.strip('#'))   # 'Python'
 ```
 
+::: warning strip() 不是「刪掉這個字串」
+`strip('#')` 是從兩端逐字元比對，只要符合就移除，直到遇到不符合的字元為止。
+如果字元出現在**中間**，不會被移除：
+
+```python
+s = '###Py#thon###'
+print(s.strip('#'))   # 'Py#thon'，中間的 # 不受影響
+```
+:::
+
 ## replace()：取代字串內容
 
 `replace(old, new)` 會將字串中所有的 `old` 替換成 `new`，並回傳一個**新的字串**（原字串不會被改變）。
@@ -40,6 +50,7 @@ s = 'I like apple. Apple is sweet.'
 
 new_s = s.replace('apple', 'banana')
 print(new_s)   # I like banana. Apple is sweet.
+print(s)       # I like apple. Apple is sweet.（原字串不變）
 ```
 
 ::: tip 注意大小寫
@@ -56,27 +67,29 @@ print(s.replace('-', '_', 2))   # a_b_c-d-e，只替換前兩個
 
 ## 大小寫轉換
 
-| 方法             | 說明                             |
-| ---------------- | -------------------------------- |
-| `upper()`      | 全部轉為大寫                     |
-| `lower()`      | 全部轉為小寫                     |
-| `title()`      | 每個單字的第一個字母大寫         |
-| `capitalize()` | 只有字串第一個字母大寫，其餘小寫 |
-| `swapcase()`   | 大小寫互換                       |
+| 方法 | 說明 | 範例輸入 | 結果 |
+|------|------|---------|------|
+| `upper()` | 全部轉為大寫 | `'hello'` | `'HELLO'` |
+| `lower()` | 全部轉為小寫 | `'HELLO'` | `'hello'` |
+| `title()` | 每個單字的第一個字母大寫 | `'hello world'` | `'Hello World'` |
+| `capitalize()` | 只有字串第一個字母大寫，其餘小寫 | `'hello WORLD'` | `'Hello world'` |
+| `swapcase()` | 大小寫互換 | `'Hello World'` | `'hELLO wORLD'` |
 
 ```python
 s = 'hello python world'
 
-print(s.upper())        # HELLO PYTHON WORLD
-print(s.lower())         # hello python world
-print(s.title())         # Hello Python World
-print(s.capitalize())    # Hello python world
+print(s.upper())       # HELLO PYTHON WORLD
+print(s.lower())       # hello python world
+print(s.title())       # Hello Python World
+print(s.capitalize())  # Hello python world
 
 s2 = 'Hello WORLD'
-print(s2.swapcase())     # hELLO world
+print(s2.swapcase())   # hELLO world
 ```
 
 ## 綜合範例：清理使用者輸入的資料
+
+處理使用者輸入時，常需要同時去除空白和統一大小寫，可以鏈式呼叫多個方法：
 
 ```python
 raw_input = '   john_smith@Example.COM   '
@@ -101,6 +114,15 @@ text = '2024年06月13日'
 new_text = text.replace('年', '/').replace('月', '/').replace('日', '')
 print(new_text)   # 2024/06/13
 ```
+
+## 本節方法一覽
+
+| 方法 | 改變原字串？ | 說明 |
+|------|------------|------|
+| `strip()` / `lstrip()` / `rstrip()` | ❌（回傳新字串） | 去除空白或指定字元 |
+| `replace(old, new)` | ❌（回傳新字串） | 取代所有符合的子字串 |
+| `upper()` / `lower()` | ❌（回傳新字串） | 大小寫轉換 |
+| `title()` / `capitalize()` / `swapcase()` | ❌（回傳新字串） | 各種大小寫規則 |
 
 ### 自主練習
 

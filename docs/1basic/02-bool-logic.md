@@ -49,6 +49,10 @@ print(age >= 18 or has_id)    # True，至少一個成立
 print(not has_id)             # False
 ```
 
+::: warning  提醒
+優先順序為 **not > and > or**
+:::
+
 ## 邏輯式的短路評估
 
 `and` 與 `or` 具有「短路（short-circuit）」特性：一旦結果可以確定，就不會再繼續判斷後面的條件。

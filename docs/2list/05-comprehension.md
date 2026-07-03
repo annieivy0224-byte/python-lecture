@@ -8,7 +8,15 @@
 [運算式 for 變數 in 可迭代物件]
 ```
 
+先用一般迴圈看懂邏輯，再對照 list comprehension 的寫法：
+
 ```python
+# 傳統寫法
+a = []
+for i in range(1000):
+    a.append(i + 1)
+
+# list comprehension 寫法（效果完全相同）
 a = [i + 1 for i in range(1000)]
 
 print(a)
@@ -35,6 +43,13 @@ print(a)
 ```
 
 ```python
+# 傳統寫法
+a = []
+for i in range(1, 1001):
+    if i % 23 == 0 or i % 35 == 0:
+        a.append(i)
+
+# list comprehension 寫法
 a = [i for i in range(1, 1001) if i % 23 == 0 or i % 35 == 0]
 
 print(a)
@@ -63,11 +78,17 @@ print(long_words)   # ['apple', 'banana', 'cherry']
 
 ## 範例：條件式運算（if...else）
 
-list comprehension 也可以搭配 `if...else` 對每個元素做不同的轉換（此時 `if...else` 要放在運算式的位置，而不是篩選條件）：
+list comprehension 也可以搭配 `if...else` 對每個元素做不同的轉換。
+
+::: warning if 的位置決定用途
+- `if` 放在**後面**（篩選）：`[x for x in lst if 條件]` → 符合條件才保留
+- `if...else` 放在**前面**（轉換）：`[A if 條件 else B for x in lst]` → 每個元素都保留，但給不同的值
+:::
 
 ```python
 nums = [1, 2, 3, 4, 5, 6]
 
+# if...else 放在運算式位置（每個元素都會被處理）
 result = ['偶數' if n % 2 == 0 else '奇數' for n in nums]
 print(result)   # ['奇數', '偶數', '奇數', '偶數', '奇數', '偶數']
 ```
@@ -79,3 +100,4 @@ print(result)   # ['奇數', '偶數', '奇數', '偶數', '奇數', '偶數']
 3. 建立一個清單，內容是 `1 ~ 100` 中所有除以 `5` 餘數為 `3` 的數。
 4. 給定 `nums = [12, 7, 5, 22, 9, 30, 14]`，使用 list comprehension 篩選出所有大於 `10` 的數。
 5. 給定 `words = ['Tom', 'AMY', 'bob']`，使用 list comprehension 將所有字串轉為小寫。
+6. 給定 `nums = [1, 2, 3, 4, 5, 6]`，使用 list comprehension 建立一個新清單，將偶數乘以 2、奇數保持不變。
