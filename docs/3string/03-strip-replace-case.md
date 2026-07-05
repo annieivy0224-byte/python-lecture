@@ -23,7 +23,7 @@ print(s.rstrip() + '|')   # '   Hello|'
 
 ## strip() 去除指定字元
 
-`strip()` 也可以傳入參數，去除指定的字元（會去除前後**所有**符合的字元，直到遇到不符合的字元為止）。
+`strip()` 也可以傳入參數，去除指定的字元（會去除**前後**所有符合的字元，直到遇到不符合的字元為止）。
 
 ```python
 s = '###Python###'
@@ -65,13 +65,24 @@ s = 'a-b-c-d-e'
 print(s.replace('-', '_', 2))   # a_b_c-d-e，只替換前兩個
 ```
 
+### 指定替換次數
+
+`replace(old, new, count)` 第三個參數可以限制最多替換幾次：
+
+```python
+t = 'aaabbbccc'
+
+print(t.replace('a', 'A'))      # 'AAAbbbccc'，全部替換
+print(t.replace('b', 'B', 2))   # 'aaaBBbccc'，只替換前兩個
+```
+
 ## 大小寫轉換
 
 | 方法 | 說明 | 範例輸入 | 結果 |
 |------|------|---------|------|
 | `upper()` | 全部轉為大寫 | `'hello'` | `'HELLO'` |
 | `lower()` | 全部轉為小寫 | `'HELLO'` | `'hello'` |
-| `title()` | 每個單字的第一個字母大寫 | `'hello world'` | `'Hello World'` |
+| `title()` | 首字母大寫 | `'hello world'` | `'Hello World'` |
 | `capitalize()` | 只有字串第一個字母大寫，其餘小寫 | `'hello WORLD'` | `'Hello world'` |
 | `swapcase()` | 大小寫互換 | `'Hello World'` | `'hELLO wORLD'` |
 
@@ -85,6 +96,65 @@ print(s.capitalize())  # Hello python world
 
 s2 = 'Hello WORLD'
 print(s2.swapcase())   # hELLO world
+```
+
+## 判斷字串的字元組成
+
+語法：`字串.方法()` → 回傳布林值（`True` / `False`）
+
+| 方法 | 說明 |
+|------|------|
+| `isalnum()` | 字元是否皆由**字母或數字**組成 |
+| `isalpha()` | 字元是否**皆為字母** |
+| `isdigit()` | 字元是否**皆為數字** |
+| `islower()` | 字元是否**皆為小寫字母** |
+| `isupper()` | 字元是否**皆為大寫字母** |
+
+```python
+print('Ab123'.isalnum())   # True
+print('Ab123'.isalpha())   # False，包含數字
+print('123'.isdigit())     # True
+print('hello'.islower())   # True
+print('HELLO'.isupper())   # True
+```
+
+::: warning 注意
+空白、特殊符號、標點符號都**不算**字母或數字，只要字串中含有這些字元，結果就會是 `False`。
+空字串也會回傳 `False`。
+
+```python
+print('Ab 123'.isalnum())   # False，含有空白
+print(''.isalpha())          # False，空字串
+print('hello!'.isalpha())    # False，含有驚嘆號
+```
+:::
+
+## 字元與 ASCII 碼的轉換
+
+語法：`函式(引數)` → 這是**函式**，不是方法，不需要加在字串後面。
+
+| 函式 | 說明 | 回傳型別 |
+|------|------|---------|
+| `chr(n)` | 將 ASCII 數值轉為對應字元 | `str` |
+| `ord(c)` | 將字元轉為對應 ASCII 數值 | `int` |
+
+```python
+print(chr(65))    # 'A'
+print(chr(90))    # 'Z'
+print(chr(97))    # 'a'
+
+print(ord('a'))   # 97
+print(ord('z'))   # 122
+print(ord('A'))   # 65
+```
+
+常見應用：搭配迴圈產生字母序列：
+
+```python
+# 印出 A 到 Z
+for i in range(26):
+    print(chr(ord('A') + i), end=' ')
+# A B C D E F ... Z
 ```
 
 ## 綜合範例：清理使用者輸入的資料
@@ -123,6 +193,9 @@ print(new_text)   # 2024/06/13
 | `replace(old, new)` | ❌（回傳新字串） | 取代所有符合的子字串 |
 | `upper()` / `lower()` | ❌（回傳新字串） | 大小寫轉換 |
 | `title()` / `capitalize()` / `swapcase()` | ❌（回傳新字串） | 各種大小寫規則 |
+| `isalnum()` / `isalpha()` / `isdigit()` | ❌（回傳布林值） | 判斷字元組成 |
+| `islower()` / `isupper()` | ❌（回傳布林值） | 判斷大小寫組成 |
+| `chr(n)` / `ord(c)` | — | ASCII 與字元互轉（函式，非方法） |
 
 ### 自主練習
 

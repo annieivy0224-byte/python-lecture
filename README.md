@@ -1,4 +1,3 @@
-
 # Python 初階課程講義（VitePress）
 
 本專案使用 [VitePress](https://vitepress.dev/) 建立，內容涵蓋：
