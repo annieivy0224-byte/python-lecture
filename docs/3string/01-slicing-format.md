@@ -55,6 +55,7 @@ print(s[::-1])   # !nohtyP ,olleH，反轉字串
 ## List vs String 動態視圖比較
 
 ⬇️ 可以點擊玩玩看
+<IndexDemo />
 
 ## 格式化輸出：f-string
 
