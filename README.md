@@ -68,7 +68,7 @@ npm run docs:preview
 
 ### 之後更新內容
 
-每次修改 `.md` 內容後，只需要禁入專案資料夾在終端機輸入：
+每次修改 `.md` 內容後，只需要進入專案資料夾在終端機輸入：
 
 ```bash
 git add .
@@ -77,6 +77,22 @@ git push
 ```
 
 GitHub Actions 會自動重新建置並更新網站，幾分鐘後學員看到的內容就會更新。
+
+### 拉最新進度
+
+只需要進入專案資料夾在終端機輸入：
+
+```bash
+git pull
+```
+
+### 若彈出`C:\git`（一個資料夾）
+
+在終端機 PowerShell 輸入：
+
+```powershell
+$env:PATH = "C:\Git\bin;" + $env:PATH
+```
 
 ---
 
