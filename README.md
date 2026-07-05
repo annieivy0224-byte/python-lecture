@@ -94,6 +94,17 @@ git pull
 $env:PATH = "C:\Git\bin;" + $env:PATH
 ```
 
+### build 成功，deploy 失敗
+GitHub Pages 權限設定問題
+
+到 Actions 頁面，點左側 deploy 失敗的 job，右上角有 Re-run jobs -> Re-run failed jobs 重跑一次。
+
+還是沒成功檢查：
+上方 Settings -> 左側選 Pages :
+在 Build and deployment 的 Source 下拉選單，選 GitHub Actions 並存檔
+
+回到 Actions 頁面重跑一次就會成功了。
+
 ---
 
 ## 目錄結構
