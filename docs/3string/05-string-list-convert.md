@@ -17,7 +17,7 @@ chars = list(s)
 print(chars)   # ['P', 'y', 't', 'h', 'o', 'n']
 ```
 
-### 方法二：split()，依分隔字元拆解
+### 方法二：.split()，依分隔字元拆解
 
 ```python
 s = 'apple,banana,cherry'
@@ -28,7 +28,7 @@ print(fruits)   # ['apple', 'banana', 'cherry']
 
 ## 清單 → 字串
 
-### 方法一：將字元合併，直接使用 `join()`
+### 方法一：將字元合併，直接使用 `''.join()`
 
 ```python
 chars = ['P', 'y', 't', 'h', 'o', 'n']
@@ -44,7 +44,7 @@ s = ', '.join(fruits)
 print(s)   # apple, banana, cherry
 ```
 
-### 方法二：將數字合併，先轉成 `str()` 再使用 `join()`
+### 方法二：將數字合併，先轉成 `str()` 再使用 `''.join()`
 
 ::: warning str(list) 不是你要的結果
 `str(list)` 會把整個清單轉成包含中括號與逗號的字串：
@@ -63,6 +63,7 @@ nums = [1, 2, 3]
 s = ','.join([str(n) for n in nums])
 print(s)   # '1,2,3'
 ```
+
 :::
 
 ## 綜合範例：處理一行 CSV 資料
@@ -118,13 +119,13 @@ s: 4 次
 
 ## 轉換方法總整理
 
-| 需求 | 寫法 |
-|------|------|
-| 字串逐字元拆成清單 | `list(s)` |
-| 字串依分隔符拆成清單 | `s.split(sep)` |
-| 字串清單合併為字串 | `'sep'.join(lst)` |
-| 字元清單合併為字串 | `''.join(chars)` |
-| 數字清單合併為字串 | `'sep'.join([str(n) for n in nums])` |
+| 需求                 | 寫法                                   |
+| -------------------- | -------------------------------------- |
+| 字串逐字元拆成清單   | `list(s)`                            |
+| 字串依分隔符拆成清單 | `s.split(sep)`                       |
+| 字串清單合併為字串   | `'sep'.join(lst)`                    |
+| 字元清單合併為字串   | `''.join(chars)`                     |
+| 數字清單合併為字串   | `'sep'.join([str(n) for n in nums])` |
 
 ### 自主練習
 
@@ -134,4 +135,4 @@ s: 4 次
 4. 給定 `line = 'A,90,B,85,C,78'`，請分兩步完成：
    - 先用 `split(',')` 切割，取得 `['A', '90', 'B', '85', 'C', '78']`
    - 再用 list comprehension 或迴圈，每兩個元素組成一個子清單，產生 `[['A', 90], ['B', 85], ['C', 78]]`
-   （提示：用 `range(0, len(data), 2)` 每次跳兩格）
+     （提示：用 `range(0, len(data), 2)` 每次跳兩格）

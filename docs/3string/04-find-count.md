@@ -21,9 +21,9 @@ else:
     print('缺少@符號')
 ```
 
-## find()：找出子字串第一次出現的位置
+## .find()：找出子字串第一次出現的位置
 
-`find()` 會回傳子字串第一次出現的**索引位置**；若找不到，回傳 `-1`（**不會**產生錯誤）。
+`.find()` 會回傳子字串第一次出現的**索引位置**；若找不到，回傳 `-1`（**不會**產生錯誤）。
 
 ```python
 s = 'Hello, Python! Python is great.'
@@ -44,18 +44,18 @@ print(first)    # 7
 print(second)   # 15
 ```
 
-::: tip find() vs index()（字串版）
-字串也有 `index()` 方法，行為幾乎相同，但找不到時的處理不同：
+::: tip s.find() vs s.index()
+字串也有 `.index()` 方法，行為幾乎相同，但找不到時的處理不同：
 
-| 方法 | 找不到時 |
-|------|---------|
-| `str.find(sub)` | 回傳 `-1`（安全） |
-| `str.index(sub)` | 產生 `ValueError`（需搭配 try/except） |
+| 方法               | 找不到時                                  |
+| ------------------ | ----------------------------------------- |
+| `str.find(sub)`  | 回傳 `-1`（安全）                        |
+| `str.index(sub)` | 產生 `ValueError`（需搭配 try/except） |
 
-通常 `find()` 更常用，因為可以直接用 `if pos != -1` 判斷是否找到。
+通常 `.find()` 更常用，因為可以直接用 `if pos != -1` 判斷是否找到。
 :::
 
-## count()：計算子字串出現的次數
+## .count()：計算子字串出現的次數
 
 ```python
 s = 'banana'
@@ -80,8 +80,8 @@ print(f'"the" 出現了 {count_the} 次')
 "the" 出現了 3 次
 ```
 
-::: warning str.count() vs split().count() 的差異
-`sentence.count('the')` 會把 `'the'` 當作**子字串**搜尋，`'they'`、`'other'` 中的 `'the'` 也會被算進去。
+::: warning s.count() vs s.split().count() 的差異
+`s.count('the')` 會把 `'the'` 當作**子字串**搜尋，`'they'`、`'other'` 中的 `'the'` 也會被算進去。
 
 ```python
 s = 'the other theme'
@@ -105,12 +105,12 @@ else:
 
 說明：
 
-- `isalpha()`：判斷字元是否為英文字母
-- `isdigit()`：判斷字串是否全為數字
+- `.isalpha()`：判斷字元是否為英文字母
+- `.isdigit()`：判斷字串是否全為數字
 
 ## 範例：找出所有出現位置
 
-利用迴圈搭配 `find()`，可以找出子字串**所有**出現的位置：
+利用迴圈搭配 `.find()`，可以找出子字串**所有**出現的位置：
 
 ```python
 s = 'ababcabcab'
@@ -131,12 +131,12 @@ print(positions)   # [0, 2, 5, 8]
 
 ## 本節方法一覽
 
-| 方法 | 找不到時 | 說明 |
-|------|---------|------|
-| `sub in str` | 回傳 `False` | 判斷子字串是否存在 |
-| `str.find(sub)` | 回傳 `-1` | 找第一次出現的索引 |
-| `str.find(sub, start)` | 回傳 `-1` | 從 start 開始找 |
-| `str.count(sub)` | 回傳 `0` | 計算出現次數 |
+| 方法                     | 找不到時      | 說明               |
+| ------------------------ | ------------- | ------------------ |
+| `sub in s`           | 回傳`False` | 判斷子字串是否存在 |
+| `s.find(sub)`        | 回傳`-1`    | 找第一次出現的索引 |
+| `s.find(sub, start)` | 回傳`-1`    | 從 start 開始找    |
+| `s.count(sub)`       | 回傳`0`     | 計算出現次數       |
 
 ### 自主練習
 
