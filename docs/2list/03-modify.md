@@ -108,7 +108,7 @@ print(fruits)   # []
 | `clear()` | 清空清單 | 無 |
 | `extend(lst)` | 將另一個清單的所有元素加入尾端 | 無 |
 | `insert(i, x)` | 在索引 i 位置插入元素 x | 無 |
-| `del list[i]` | 刪除索引 i 的元素 | 無 |
+| `del list[i]` | 刪除索引 i 的元素 | 無 |ㄒㄧ
 
 ### 自主練習
 

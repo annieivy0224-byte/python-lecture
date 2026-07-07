@@ -13,8 +13,7 @@
 ```python
 s = 'Python'
 
-chars = list(s)
-print(chars)   # ['P', 'y', 't', 'h', 'o', 'n']
+print(list(s))   # ['P', 'y', 't', 'h', 'o', 'n']
 ```
 
 ### 方法二：split()，依分隔字元拆解
@@ -22,31 +21,27 @@ print(chars)   # ['P', 'y', 't', 'h', 'o', 'n']
 ```python
 s = 'apple,banana,cherry'
 
-fruits = s.split(',')
-print(fruits)   # ['apple', 'banana', 'cherry']
+print(s.split(','))   # ['apple', 'banana', 'cherry']
 ```
 
 ## 清單 → 字串
 
-### 方法一：將字元合併，直接使用 `join()`
+### 方法 1：將字元合併，直接使用 `''.join()`
 
 ```python
 chars = ['P', 'y', 't', 'h', 'o', 'n']
 
-s = ''.join(chars)
-print(s)   # Python
+print(''.join(chars))   # Python
 ```
 
 ```python
 fruits = ['apple', 'banana', 'cherry']
 
-s = ', '.join(fruits)
-print(s)   # apple, banana, cherry
+print(', '.join(fruits))   # apple, banana, cherry
 ```
 
-### 方法二：將數字合併，先轉成 `str()` 再使用 `join()`
+### 方法 2：將數字合併，先轉成 `str()` 再使用 `''.join()`
 
-::: warning str(list) 不是你要的結果
 `str(list)` 會把整個清單轉成包含中括號與逗號的字串：
 
 ```python
@@ -55,15 +50,28 @@ nums = [1, 2, 3]
 print(str(nums))   # '[1, 2, 3]'，包含中括號，通常不是我們要的
 ```
 
-若想要 `'1,2,3'` 這種格式，需要先將每個元素轉為字串再使用 `join()`：
+若想要 `'1,2,3'` 這種格式，需要先將每個元素轉為字串再使用 `''.join()`：
 
 ```python
 nums = [1, 2, 3]
 
-s = ','.join([str(n) for n in nums])
-print(s)   # '1,2,3'
+print(','.join(map(str, nums)))   # '1,2,3'
 ```
-:::
+
+### 方法 3：將清單合併成字串 
+
+```python
+chars = ['P', 'y', 't', 'h', 'o', 'n']
+
+print(*chars) # P y t h o n
+print(*chars, sep=',')   # Python
+```
+
+```python
+nums = [1, 2, 3]
+
+print(*nums, sep=',')   # 1,2,3
+```
 
 ## 綜合範例：處理一行 CSV 資料
 
@@ -121,10 +129,10 @@ s: 4 次
 | 需求 | 寫法 |
 |------|------|
 | 字串逐字元拆成清單 | `list(s)` |
-| 字串依分隔符拆成清單 | `s.split(sep)` |
-| 字串清單合併為字串 | `'sep'.join(lst)` |
-| 字元清單合併為字串 | `''.join(chars)` |
-| 數字清單合併為字串 | `'sep'.join([str(n) for n in nums])` |
+| 字串依分隔符拆成清單 | `s.split(',')` |
+| 字串清單合併為字串 | `' '.join(li)` |
+| 字元清單合併為字串 | `' '.join(chars)` |
+| 數字清單合併為字串 | `' '.join(map(str, nums))` |
 
 ### 自主練習
 
