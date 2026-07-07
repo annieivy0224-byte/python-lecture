@@ -39,7 +39,7 @@ export default defineConfig({
         items: [
           { text: '2-1 切片 (Slicing) 與 -1 索引', link: '/2list/01-slicing' },
           { text: '2-2 排序、反轉與複製', link: '/2list/02-sort-reverse-copy' },
-          { text: '2-3 新增、刪除與插入', link: '/2list/03-modify' },
+          { text: '2-3 新增、合併、複製與刪除', link: '/2list/03-modify' },
           { text: '2-4 in / not in 與 index、count', link: '/2list/04-in-not-in' },
           { text: '2-5 List Comprehension', link: '/2list/05-comprehension' },
           { text: '2-6 巢狀清單與雙層迴圈', link: '/2list/06-nested-list' }
@@ -66,8 +66,8 @@ export default defineConfig({
       {
         text: '五、實戰題庫練習（基礎版）',
         items: [
-          { text: '5-1 字串基礎練習題', link: '/5practice/01-string-basics' },
-          { text: '5-2 清單基礎練習題', link: '/5practice/02-list-basics' },
+          { text: '5-1 清單基礎練習題', link: '/5practice/02-list-basics' },
+          { text: '5-2 字串基礎練習題', link: '/5practice/01-string-basics' },
           { text: '5-3 字串與清單綜合練習題', link: '/5practice/03-mixed' },
           { text: ' 解答與說明', link: '/5practice/04-answers' }
         ]

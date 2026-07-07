@@ -16,7 +16,7 @@ s = 'Python'
 print(list(s))   # ['P', 'y', 't', 'h', 'o', 'n']
 ```
 
-### 方法二：split()，依分隔字元拆解
+### 方法二：.split()，依分隔字元拆解
 
 ```python
 s = 'apple,banana,cherry'
@@ -142,4 +142,4 @@ s: 4 次
 4. 給定 `line = 'A,90,B,85,C,78'`，請分兩步完成：
    - 先用 `split(',')` 切割，取得 `['A', '90', 'B', '85', 'C', '78']`
    - 再用 list comprehension 或迴圈，每兩個元素組成一個子清單，產生 `[['A', 90], ['B', 85], ['C', 78]]`
-   （提示：用 `range(0, len(data), 2)` 每次跳兩格）
+     （提示：用 `range(0, len(data), 2)` 每次跳兩格）
