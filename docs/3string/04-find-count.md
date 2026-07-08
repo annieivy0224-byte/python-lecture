@@ -128,6 +128,54 @@ while True:
 
 print(positions)   # [0, 2, 5, 8]
 ```
+## 應用：雙重迴圈比對兩個字串的共同字元
+
+用雙層 `for` 迴圈逐一比對兩個字串的每個字元，找出共同出現的字元：
+
+```python
+s1 = 'python'
+s2 = 'typhoon'
+
+common = []
+
+for c1 in s1:
+    for c2 in s2:
+        if c1 == c2 and c1 not in common:
+            common.append(c1)
+
+print(f'共同字元：{common}')
+```
+
+執行結果：
+
+```
+共同字元：['p', 'y', 't', 'h', 'o', 'n']
+```
+
+::: tip 為什麼要加 c1 not in common？
+避免同一個字元被重複加入。例如 `'o'` 在 `s2` 裡出現兩次，
+不加這個判斷的話 `'o'` 會被加入兩次。
+:::
+
+### 應用：找出只在其中一個字串出現的字元
+
+```python
+s1 = 'python'
+s2 = 'typhoon'
+
+only_s1 = [c for c in s1 if c not in s2]
+only_s2 = [c for c in s2 if c not in s1]
+
+print(f'只在 s1 出現：{only_s1}')
+print(f'只在 s2 出現：{only_s2}')
+```
+
+執行結果：
+
+```
+只在 s1 出現：[]
+只在 s2 出現：['o']
+```
 
 ## 本節方法一覽
 
